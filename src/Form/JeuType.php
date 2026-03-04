@@ -28,6 +28,12 @@ class JeuType extends AbstractType
             ->add('photo1', FileType::class, [
                 'mapped' => false,
             ])
+            ->add('photo2')
+            ->add('photo3')
+            ->add('mini')
+            ->add('maxi')
+            ->add('duree')
+            ->add('stock')
             ->add('editeur', EntityType::class, [
                 'label' => 'Editeur du jeu ',
                 'class' => Editeur::class,
