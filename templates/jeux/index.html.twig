@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Liste des Jeux {% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        .image-vignette {
+            width: 150px;
+            height: 100px;
+        }
+    </style>
+{% endblock %}
+
+{% block main %}
+<a href="{{ path('app_jeu_new') }}">Ajouter un jeu</a><br>
+    <i class="fa-regular fa-house"></i>
+    <h1>Liste des jeux au {{ date|dateFr }}</h1>
+    <p>Date du jour {{ 'now'|dateFr }}</p>
+
+    <p>Contacts : {{ '0678965435'|phoneNumber }} // {{ '+33678965435'|phoneNumber }}</p>
+    <table>
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>{{ 'Image'|trans }}</th>
+            <th>{{ 'Jeu'|trans }}</th>
+            <th>{{ 'Avis'|trans }}</th>
+            <th>{{ 'Editeur'|trans }}</th>
+            <th>{{ 'Prix'|trans }}</th>
+            <th>{{ 'Modifier'|trans }}</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for jeu in jeux %}
+            <tr>
+                <td><a href="{{ path('app_fiche', {'code': jeu.id }) }}">{{ jeu.id }}</a></td>
+                <td><img class="image-vignette" src="{{ asset('images/jeux/') }}{{ jeu.photo1 }}" alt="{{ jeu.nom }}"/>
+                </td>
+                <td>{{ jeu.nom }}</td>
+                <td>{{ 3|stars }}</td>
+                <td>{{ jeu.editeur != null ? jeu.editeur.nom : 'non précisé' }}</td>
+                <td>{{ jeu.prix|price('€', 2, ',', ' ') }}</td>
+                <td>
+                    <a href="{{ path('app_jeu_modif', {'id': jeu.id }) }}">Modifier</a>
+                    <button class="btn btn-primary ajoutJeu" data-id="{{ jeu.id }}" data-nom="{{ jeu.nom }}" data-prix="{{ jeu.prix }}">Ajouter au panier</button>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+{% endblock %}

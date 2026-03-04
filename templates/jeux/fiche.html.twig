@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Fiche Jeu{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        .image-jeu {
+            width: 200px;
+            height: auto;
+        }
+    </style>
+{%  endblock %}
+
+{% block main %}
+    <h1>{{ jeu.nom }}</h1>
+    <img src="{{ asset('images/jeux/') }}{{ jeu.photo1 }}" alt="{{ jeu.nom }}" class="image-jeu" />
+    <img src="{{ asset('images/jeux/') }}{{ jeu.photo2 }}" alt="{{ jeu.nom }}" class="image-jeu" />
+    <img src="{{ asset('images/jeux/') }}{{ jeu.photo3 }}" alt="{{ jeu.nom }}" class="image-jeu" />
+    <p>Prix Unitaire : {{ jeu.prix }} €</p>
+
+    <form method="post" action="{{ path('app_jeu_supprime', {'id': jeu.id}) }}" onsubmit="return confirm('Êtes-vous sûr ?');">
+        <button class="btn btn-danger">Supprimer</button>
+    </form>
+{% endblock %}

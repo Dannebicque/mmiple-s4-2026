@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Panier{% endblock %}
+
+{% block main %}
+    <h1>Panier</h1>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Prix</th>
+            <th>Quantité</th>
+            <th>Total</th>
+        </tr>
+        </thead>
+        <tbody id="panier">
+        </tbody>
+    </table>
+
+    <button class="btn btn-danger" id="viderPanier">Vider le panier</button>
+
+{% endblock %}

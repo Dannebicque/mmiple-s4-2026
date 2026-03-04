@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AccueilController!{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        body {
+            background-color: white;
+        }
+        p {
+            font-size: 1.5em;
+            color:black;
+        }
+        </style>
+{% endblock %}
+
+{% block main %}
+    <article>{{ message }}</article>
+
+----
+    {% for editeur in editeurs %}
+    <p>{{ editeur.nom }}</p>
+    {% endfor %}
+
+
+    ---
+    <p>{{ date|format_datetime('full', 'full') }}</p>
+    <p>{{ date|format_datetime('short', 'none') }}</p>
+    <p>{{ date|format_datetime('medium', 'none') }}</p>
+    <p>{{ date|format_datetime('long', 'short') }}</p>
+
+
+    <p>{{ 10|format_currency('EUR', {}, 'fr') }}</p>
+    <p>{{ 10|format_currency('USD', {}, 'en') }}</p>
+    <p>{{ 10|format_currency('USD', {}, app.locale) }}</p>
+    ---
+{% endblock %}

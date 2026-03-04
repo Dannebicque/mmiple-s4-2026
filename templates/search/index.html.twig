@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello SearchController!{% endblock %}
+
+{% block main %}
+    <h1>Recherche</h1>
+
+    <form action="{{ path('app_search') }}" method="post">
+        <label for="texte">Rechercher</label>
+        <input id="texte" name="texte" type="text">
+        <button type="submit">Rechercher</button>
+    </form>
+
+    <h2>Résultats</h2>
+    {% for jeu in jeux %}
+        <p>{{ jeu.nom }}</p>
+    {% else %}
+        Aucune réponse
+    {% endfor %}
+{% endblock %}

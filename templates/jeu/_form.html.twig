@@ -1,0 +1,23 @@
+{{ form_start(form_jeu) }}
+<div class="row">
+    <div class="col-6">
+
+        {{ form_row(form_jeu.nom) }}
+        {{ form_row(form_jeu.prix) }}
+        {{ form_row(form_jeu.editeur) }}
+        {{ form_row(form_jeu.stock) }}
+    </div>
+
+    <div class="col-6">
+
+        {{ form_row(form_jeu.mini) }}
+        {{ form_row(form_jeu.maxi) }}
+        {{ form_row(form_jeu.duree) }}
+        {{ form_row(form_jeu.photo1) }}
+        {{ form_row(form_jeu.photo2) }}
+        {{ form_row(form_jeu.photo3) }}
+    </div>
+    >
+</div>
+<button class="btn">{{ button_label|default('OK') }}</button>
+{{ form_end(form_jeu) }}
